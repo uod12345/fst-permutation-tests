@@ -19,7 +19,7 @@ mkdir -p $PERM_DIR
 mkdir -p $FST_DIR
 mkdir -p $PVALUE_DIR
 
-PERM_FL=$PERM_DIR/$filename
+PERM_FL=$PERM_DIR/$filename.gz
 FST_FL=$FST_DIR/$filename
 PVALUE_FL=$PVALUE_DIR/$base.tsv
 
