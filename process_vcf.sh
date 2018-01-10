@@ -26,11 +26,11 @@ PVALUE_FL=$PVALUE_DIR/$base.tsv
 echo "Generating permutations"
 python generate_permutations.py \
        --input-vcf $VCF_FILE \
-       --output-vcf $PERM_FL \
+       --output-gz-vcf $PERM_FL \
        --n-permutations $N_PERMUTATIONS
 
 echo "Computing FST scores"
-vcftools --vcf $PERM_FL \
+vcftools --gzvcf $PERM_FL \
          --weir-fst-pop $POP1 \
          --weir-fst-pop $POP2 \
          --out $FST_FL

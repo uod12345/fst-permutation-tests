@@ -1,4 +1,5 @@
 import argparse
+import gzip
 import random
 
 header_left = "#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT"
@@ -19,7 +20,7 @@ def generate_lines(sample_names, snps_gen):
         yield "\t".join(cols)
 
 def vcf_writer(flname, stream):
-    with open(flname, "w") as fl:
+    with gzip.open(flname, "w") as fl:
         for ln in stream:
             fl.write(ln)
             fl.write("\n")
@@ -64,7 +65,7 @@ def parseargs():
                         type=int,
                         required=True)
 
-    parser.add_argument("--output-vcf",
+    parser.add_argument("--output-gz-vcf",
                         type=str,
                         required=True)
 
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     lines = generate_lines(sample_names,
                            permutations)
 
-    vcf_writer(args.output_vcf,
+    vcf_writer(args.output_gz_vcf,
                lines)
     
 
